@@ -4,7 +4,7 @@
         :topic-title="activeTopic && activeTopic.title"
         :text="activeTopic && activeTopic.fullText"
     ></active-element>
-    <knowledge-base :topics="topics" @select-topic="activateTopic"></knowledge-base>
+    <knowledge-base></knowledge-base>
   </div>
 </template>
 
@@ -32,12 +32,32 @@ export default {
       activeTopic: null,
     };
   },
+
+  provide() {
+    return {
+      topics: this.topics,
+      selectTopic: this.activateTopic
+    }
+  },
+
   methods: {
     activateTopic(topicId) {
       this.activeTopic = this.topics.find((topic) => topic.id === topicId);
     },
   },
-};
+
+  mounted() {
+    setTimeout(() => {
+      this.topics.push({
+        id: 'basics123',
+        title: 'Basics123456',
+        description: 'Test Core Vue basics you have to know',
+        fullText: 'Core Vue basics you have to know Core Vue basics you have to know Core Vue basics you have to know'
+      });
+    }, 3000);
+  }
+}
+;
 </script>
 
 <style>
