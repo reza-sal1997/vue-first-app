@@ -42,7 +42,7 @@ export default {
       default: false,
     },
   },
-  emits : ['toggle-favorite', 'delete'],
+  emits: ['toggle-favorite', 'delete'],
   // emits: {
   //   'toggle-favorite': function (id) {
   //     if (id) {
